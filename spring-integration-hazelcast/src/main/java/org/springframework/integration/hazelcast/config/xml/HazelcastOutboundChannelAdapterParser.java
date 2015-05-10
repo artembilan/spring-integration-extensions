@@ -50,20 +50,20 @@ public class HazelcastOutboundChannelAdapterParser extends AbstractOutboundChann
 		BeanDefinitionBuilder builder = BeanDefinitionBuilder
 				.genericBeanDefinition(HazelcastCacheWritingMessageHandler.class);
 
-		IntegrationNamespaceUtils.setReferenceIfAttributeDefined(builder, element,
-				CACHE_ATTRIBUTE, DISTRIBUTED_OBJECT);
-		BeanDefinition cacheExpressionDef = IntegrationNamespaceUtils.createExpressionDefIfAttributeDefined(CACHE_EXPRESSION_ATTRIBUTE, element);
+		IntegrationNamespaceUtils.setReferenceIfAttributeDefined(builder, element, CACHE_ATTRIBUTE, DISTRIBUTED_OBJECT);
+		BeanDefinition cacheExpressionDef =
+				IntegrationNamespaceUtils.createExpressionDefIfAttributeDefined(CACHE_EXPRESSION_ATTRIBUTE, element);
 		if (cacheExpressionDef != null) {
 			builder.addPropertyValue("cacheExpression", cacheExpressionDef);
 		}
 
-		BeanDefinition keyExpressionDef = IntegrationNamespaceUtils.createExpressionDefIfAttributeDefined(KEY_EXPRESSION_ATTRIBUTE, element);
+		BeanDefinition keyExpressionDef =
+				IntegrationNamespaceUtils.createExpressionDefIfAttributeDefined(KEY_EXPRESSION_ATTRIBUTE, element);
 		if (keyExpressionDef != null) {
 			builder.addPropertyValue("keyExpression", keyExpressionDef);
 		}
 
-		IntegrationNamespaceUtils.setValueIfAttributeDefined(builder, element,
-				EXTRACT_PAYLOAD_ATTRIBUTE);
+		IntegrationNamespaceUtils.setValueIfAttributeDefined(builder, element, EXTRACT_PAYLOAD_ATTRIBUTE);
 
 		return builder.getBeanDefinition();
 	}
